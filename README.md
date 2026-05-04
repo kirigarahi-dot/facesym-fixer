@@ -49,3 +49,18 @@ Point your Swift `APIClient` endpoint to the Render URL:
 ```swift
 private let endpoint = URL(string: "https://xxxx.onrender.com/fix")!
 ```
+
+## Tiny RPG API
+`POST /rpg` で簡易RPGを遊べます。
+
+- `action=start` : 戦闘開始
+- `action=attack` : 攻撃
+- `action=potion` : 回復
+- `action=flee` : 逃走
+
+例:
+```bash
+curl -X POST http://localhost:8787/rpg \
+  -H "Content-Type: application/json" \
+  -d '{"action":"start"}'
+```
