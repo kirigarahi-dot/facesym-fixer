@@ -9,6 +9,7 @@ dotenv.config();
 const app = express();
 app.use(cors());
 app.use(express.json({ limit: "20mb" }));
+app.use(express.static("public"));
 
 // 🔒 Read secret prompt from Render Secret Files mount path
 // Upload your prompt as a Secret File and set the mount path to:
@@ -25,7 +26,7 @@ try {
 
 // Health check
 app.get("/", (req, res) => {
-  res.send("FaceSymmetry Fixer API is running.");
+  res.sendFile(new URL("./public/index.html", import.meta.url).pathname);
 });
 
 // Minimal /fix endpoint: echoes image for now and returns a stub log.
